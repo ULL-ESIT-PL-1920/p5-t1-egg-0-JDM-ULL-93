@@ -1,7 +1,7 @@
 
 
 
-class CoreScope {
+class EggCoreScope {
 	constructor(){
 		this.true = true;
 		this.false = false;
@@ -127,7 +127,7 @@ class EggVM{
 	}
 	
 	run(){
-		this.evaluate(this.AST, new CoreScope())
+		this.evaluate(this.AST, new EggCoreScope())
 	}
 	
 	load(program){
@@ -191,3 +191,9 @@ do(define(x, 4),
    print(x))
 `).run();
 // → 50
+
+module.exports= {
+	EggCoreScope,
+	EggCoreStatements,
+	EggVM
+}
