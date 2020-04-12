@@ -169,6 +169,25 @@ specialForms.fun = (args, scope) => {
     };
 };
 
+specialForms.set = (args, scope) => {
+	if(args.length !=  2) 
+		throw new SyntaxError("Incorrect use of Set. Set needs two arguments ");
+	else if( args[0].type != "word" ) 
+		throw new SyntaxError("Incorrect use of Set. Set needs a word as first argument ");
+	let value = evaluate(args[1], scope);
+
+	if(args[0].name in scope){
+		let scopeIt = scope;
+		do{
+			scopeIt[args[0].name] = value;
+			//No llegamos al scope global, pero hemos llegado al punto donde la variable se definió, más atrás no nos importa tocar (y sería incorrecto):
+			if(args[0].name in Object.getOwnPropertyNames(scopeIt)) break; 
+		}while(scopeIt = Object.getPrototypeOf(scopeIt));
+	}
+	else 
+		throw new ReferenceError(`Undefined variable: ${args[0].name}`)
+};
+
 ////////////////////////////////////////////////////////////////////////////////
 ///SCOPE
 const topScope = Object.create(null);
@@ -204,7 +223,7 @@ function run(program) {
     return evaluate(parse(program), Object.create(topScope));
 }
 
-
+/*
 run(`
 do(define(total, 0),
    define(count, 1),
@@ -212,14 +231,15 @@ do(define(total, 0),
          do(define(total, +(total, count)),
             define(count, +(count, 1)))),
    print(total))
-`);
+`);*/
 // → 55
-
+/*
 run(`
 do(define(plusOne, fun(a, +(a, 1))),
    print(plusOne(10)))
 `);
 // → 11
+*/
 
 run(`
 do(define(pow, fun(base, exp,
@@ -229,7 +249,7 @@ do(define(pow, fun(base, exp,
    print(pow(2, 10)))
 `);
 // → 1024
-
+/*
 run(`
 do(define(sum, fun(array,
      do(define(i, 0),
@@ -246,4 +266,17 @@ run(`
 do(define(f, fun(a, fun(b, +(a, b)))),
    print(f(4)(5)))
 `);
-// → 9
+// → 9*/
+
+
+run(`
+do(define(x, 4),
+   define(setx, fun(val, set(x, val))),
+   setx(50),
+   print(x))
+`);
+// → 50
+
+
+run(`set(quux, true)`);
+// → Some kind of ReferenceError
