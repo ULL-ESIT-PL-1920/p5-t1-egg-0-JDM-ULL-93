@@ -60,6 +60,9 @@ P = {
    STRING = /"((?:[^"\\]|\\.)*)"/;
    NUMBER = /([-+]?\d*\.?\d+([eE][-+]?\d+)?)/;
    WORD   = /([^\s(),"]+)/;
+   ',';
+   '(';
+   ')';
 }
 ```
 
@@ -116,9 +119,7 @@ V  {expression, apply}
 S = expression
 
 P = {
-   expression: STRING
-            | NUMBER
-            | WORD apply 
+   expression: STRING | NUMBER | WORD apply 
 
    apply: /* vacio */
       | '(' (expression ',')* expression? ')' apply
@@ -128,6 +129,11 @@ P = {
    WHITES = /(\s|[#;].*|\/\*(.|\n)*?\*\/)*/;
    STRING = /"((?:[^"\\]|\\.)*)"/;
    NUMBER = /([-+]?\d*\.?\d+([eE][-+]?\d+)?)/;
-   WORD   = /([^\s(),"]+)/;
+   WORD   = /([^\s(),"]+)/; #[Cualquier cosa que no sea ni un \s, un '(', un ')', un ',' o un '"'] uno o más veces
+   ',';
+   '(';
+   ')';
 }
 ```
+
+Detalle: Fijarse que en esta Gramatica, no es un error dejar una coma suelta al final.
