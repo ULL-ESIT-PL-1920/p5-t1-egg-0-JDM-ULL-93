@@ -1,0 +1,37 @@
+{
+  "name": "practica8-egg",
+  "version": "1.0.0",
+  "description": "Analizador lexico y sintactico de lenguaje EGG",
+  "main": "index.js",
+  "bin": {
+    "practica8-egg": "egg.js"
+  },
+  "directories": {
+    "example": "examples",
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^25.3.0"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ULL-ESIT-PL-1920/p5-t1-egg-0-JDM-ULL-93.git"
+  },
+  "keywords": [
+    "egg",
+    "compiler",
+    "AST",
+    "lexer"
+  ],
+  "author": "alu0101160337 <alu01011600337@ull.edu.es> (https://github.com/JDM-ULL-93)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ULL-ESIT-PL-1920/p5-t1-egg-0-JDM-ULL-93/issues"
+  },
+  "homepage": "https://github.com/ULL-ESIT-PL-1920/p5-t1-egg-0-JDM-ULL-93#readme"
+}
