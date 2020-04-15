@@ -25,6 +25,13 @@ test("Uso simple con error semantico. Devuelve error", () =>{
     expect(() =>{target.run()}).toThrow(TypeError);
 });
 
+test("Uso simple con error semantico por nº argumentos incorrectos. Devuelve error", () =>{
+    const program = `do(define(a,0),+(a,),print(a))`;
+    target.load(program);
+    expect(() =>{target.run()}).toThrow(SyntaxError);
+});
+
+
 
 test("Carga desde fichero. Carga el codigo fuente del programa EGG desde fichero y lo ejecuta correctamente",
 () => {
