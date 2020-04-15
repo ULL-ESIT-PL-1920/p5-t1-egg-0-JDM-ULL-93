@@ -1,15 +1,19 @@
 {
-  "name": "practica8-egg",
+  "name": "@ull-esit-pl-1920/p5-t1-egg-0-jdm-ull-93",
   "version": "1.0.0",
   "description": "Analizador lexico y sintactico de lenguaje EGG",
   "main": "index.js",
   "bin": {
-    "practica8-egg": "egg.js"
+    "practica8-EGG-runner": "bin/egg.js",
+    "practica8-EGG-compiler": "bin/eggc.js"
   },
   "directories": {
     "example": "examples",
     "lib": "lib",
     "test": "test"
+  },
+  "publishConfig": {
+    "registry" : "https://npm.pkg.github.com"
   },
   "dependencies": {},
   "devDependencies": {

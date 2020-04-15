@@ -1,0 +1,6 @@
+.github/
+.git/
+node_modules/
+test/
+.gitignore
+lib/eggAnalyzer.js
