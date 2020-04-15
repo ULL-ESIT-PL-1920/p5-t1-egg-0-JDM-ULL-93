@@ -119,10 +119,9 @@ V  {expression, apply}
 S = expression
 
 P = {
-   expression: STRING | NUMBER | WORD apply 
+   expression: (WHITES expression) | ((STRING | NUMBER | WORD) apply) 
 
-   apply: /* vacio */
-      | '(' (expression ',')* expression? ')' apply
+   apply: ϵ | (WHITES apply) | ('(' (expression ',')* expression? ')' apply) 
 }
 
 Σ = {

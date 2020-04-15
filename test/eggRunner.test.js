@@ -19,6 +19,12 @@ test("Uso simple. Ejecuta programa EGG y devuelve resultado esperado",()=>{
     expect(target.run()).toBe(expected);
 });
 
+test("Uso simple con error semantico. Devuelve error", () =>{
+    const program = `do("hola"(1,2))`;
+    target.load(program);
+    expect(() =>{target.run()}).toThrow(TypeError);
+});
+
 
 test("Carga desde fichero. Carga el codigo fuente del programa EGG desde fichero y lo ejecuta correctamente",
 () => {
